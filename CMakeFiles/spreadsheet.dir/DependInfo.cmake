@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/csmajs/hyu146/test6/lab-06---strategy-pattern-xshen053-hyu146-1/main.cpp" "/home/csmajs/hyu146/test6/lab-06---strategy-pattern-xshen053-hyu146-1/CMakeFiles/spreadsheet.dir/main.cpp.o"
-  "/home/csmajs/hyu146/test6/lab-06---strategy-pattern-xshen053-hyu146-1/spreadsheet.cpp" "/home/csmajs/hyu146/test6/lab-06---strategy-pattern-xshen053-hyu146-1/CMakeFiles/spreadsheet.dir/spreadsheet.cpp.o"
+  "/home/mikeshen/lab-06---strategy-pattern-xshen053-hyu146-1/main.cpp" "/home/mikeshen/lab-06---strategy-pattern-xshen053-hyu146-1/CMakeFiles/spreadsheet.dir/main.cpp.o"
+  "/home/mikeshen/lab-06---strategy-pattern-xshen053-hyu146-1/spreadsheet.cpp" "/home/mikeshen/lab-06---strategy-pattern-xshen053-hyu146-1/CMakeFiles/spreadsheet.dir/spreadsheet.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

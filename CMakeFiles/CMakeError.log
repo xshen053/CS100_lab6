@@ -1,23 +1,21 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
-Change Dir: /home/csmajs/hyu146/test6/lab-06---strategy-pattern-xshen053-hyu146-1/CMakeFiles/CMakeTmp
+Change Dir: /home/mikeshen/lab-06---strategy-pattern-xshen053-hyu146-1/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/gmake cmTC_818fa/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_818fa.dir/build.make CMakeFiles/cmTC_818fa.dir/build
-gmake[1]: Entering directory `/home/csmajs/hyu146/test6/lab-06---strategy-pattern-xshen053-hyu146-1/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_818fa.dir/src.c.o
-/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_818fa.dir/src.c.o   -c /home/csmajs/hyu146/test6/lab-06---strategy-pattern-xshen053-hyu146-1/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_818fa
-/usr/bin/cmake3 -E cmake_link_script CMakeFiles/cmTC_818fa.dir/link.txt --verbose=1
-/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_818fa.dir/src.c.o  -o cmTC_818fa 
-CMakeFiles/cmTC_818fa.dir/src.c.o: In function `main':
-src.c:(.text+0x2d): undefined reference to `pthread_create'
-src.c:(.text+0x39): undefined reference to `pthread_detach'
-src.c:(.text+0x45): undefined reference to `pthread_cancel'
-src.c:(.text+0x56): undefined reference to `pthread_join'
-src.c:(.text+0x6a): undefined reference to `pthread_atfork'
+Run Build Command(s):/usr/bin/make cmTC_cba5e/fast && /usr/bin/make -f CMakeFiles/cmTC_cba5e.dir/build.make CMakeFiles/cmTC_cba5e.dir/build
+make[1]: Entering directory '/home/mikeshen/lab-06---strategy-pattern-xshen053-hyu146-1/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_cba5e.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_cba5e.dir/src.c.o   -c /home/mikeshen/lab-06---strategy-pattern-xshen053-hyu146-1/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_cba5e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cba5e.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_cba5e.dir/src.c.o  -o cmTC_cba5e 
+/usr/bin/ld: CMakeFiles/cmTC_cba5e.dir/src.c.o: in function `main':
+src.c:(.text+0x46): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status
-gmake[1]: *** [cmTC_818fa] Error 1
-gmake[1]: Leaving directory `/home/csmajs/hyu146/test6/lab-06---strategy-pattern-xshen053-hyu146-1/CMakeFiles/CMakeTmp'
-gmake: *** [cmTC_818fa/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_cba5e.dir/build.make:87: cmTC_cba5e] Error 1
+make[1]: Leaving directory '/home/mikeshen/lab-06---strategy-pattern-xshen053-hyu146-1/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_cba5e/fast] Error 2
 
 
 Source file was:
@@ -33,7 +31,6 @@ int main(void)
   pthread_t thread;
   pthread_create(&thread, NULL, test_func, NULL);
   pthread_detach(thread);
-  pthread_cancel(thread);
   pthread_join(thread, NULL);
   pthread_atfork(NULL, NULL, NULL);
   pthread_exit(NULL);
@@ -42,20 +39,20 @@ int main(void)
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/csmajs/hyu146/test6/lab-06---strategy-pattern-xshen053-hyu146-1/CMakeFiles/CMakeTmp
+Change Dir: /home/mikeshen/lab-06---strategy-pattern-xshen053-hyu146-1/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/gmake cmTC_8c6b6/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_8c6b6.dir/build.make CMakeFiles/cmTC_8c6b6.dir/build
-gmake[1]: Entering directory `/home/csmajs/hyu146/test6/lab-06---strategy-pattern-xshen053-hyu146-1/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_8c6b6.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_8c6b6.dir/CheckFunctionExists.c.o   -c /usr/share/cmake3/Modules/CheckFunctionExists.c
-Linking C executable cmTC_8c6b6
-/usr/bin/cmake3 -E cmake_link_script CMakeFiles/cmTC_8c6b6.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_8c6b6.dir/CheckFunctionExists.c.o  -o cmTC_8c6b6  -lpthreads 
+Run Build Command(s):/usr/bin/make cmTC_1742c/fast && /usr/bin/make -f CMakeFiles/cmTC_1742c.dir/build.make CMakeFiles/cmTC_1742c.dir/build
+make[1]: Entering directory '/home/mikeshen/lab-06---strategy-pattern-xshen053-hyu146-1/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1742c.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_1742c.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_1742c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1742c.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_1742c.dir/CheckFunctionExists.c.o  -o cmTC_1742c  -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-gmake[1]: *** [cmTC_8c6b6] Error 1
-gmake[1]: Leaving directory `/home/csmajs/hyu146/test6/lab-06---strategy-pattern-xshen053-hyu146-1/CMakeFiles/CMakeTmp'
-gmake: *** [cmTC_8c6b6/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_1742c.dir/build.make:87: cmTC_1742c] Error 1
+make[1]: Leaving directory '/home/mikeshen/lab-06---strategy-pattern-xshen053-hyu146-1/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_1742c/fast] Error 2
 
 
 
