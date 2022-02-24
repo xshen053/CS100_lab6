@@ -27,6 +27,8 @@ int main(int argc, char* argv[])
 
     // Sample usage 2
     sheet.set_selection(
+
+
          new Select_And(
              new Select_Contains(&sheet,"Last","Dole"),
              new Select_Not(
@@ -40,6 +42,7 @@ int main(int argc, char* argv[])
          new Select_Or(
              new Select_Contains(&sheet,"First","Amanda"),
              new Select_Or(
+
                 new Select_Contains(&sheet,"Last","on"),
                  new Select_Contains(&sheet,"Age","9"))));
 

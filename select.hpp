@@ -156,6 +156,10 @@ public:
     }
 
 
+=======
+
+    virtual bool select(int row) const = 0;
+    virtual int get_rows_size() const = 0;
 };
 
 // A common type of criterion for selection is to perform a comparison based on
