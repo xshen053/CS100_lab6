@@ -156,7 +156,6 @@ public:
     }
 
 
-=======
 
     virtual bool select(int row) const = 0;
     virtual int get_rows_size() const = 0;
