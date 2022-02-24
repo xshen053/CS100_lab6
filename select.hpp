@@ -23,7 +23,7 @@ protected:
 
 public:
     ~Select_Contains(){
-        delete Rows;
+        delete[] Rows;
     }
 
     Select_Contains(const Spreadsheet* sheet, const std::string& col, const std::string& str){
@@ -62,7 +62,7 @@ protected:
 
 public:
     ~Select_Not(){
-        delete Rows;
+        delete []Rows;
     }
 
     Select_Not(Select* sel){
@@ -71,6 +71,7 @@ public:
 	for(int i = 0; i < sel->get_rows_size(); i++){
 	    Rows[i] = !sel->select(i);
 	}
+	delete sel;
     }
                 
     virtual bool select(int row) const{
@@ -90,7 +91,7 @@ protected:
 
 public:
     ~Select_And(){
-        delete Rows;
+        delete []Rows;
     }
 
     Select_And(Select* left, Select* right){
@@ -105,6 +106,8 @@ public:
 	        Rows[i] = false;
 	    }
 	}
+	delete left;
+	delete right;
     }
 
     virtual bool select(int row) const{
@@ -126,7 +129,7 @@ protected:
 
 public:
     ~Select_Or(){
-        delete Rows;
+        delete []Rows;
     }
 
     Select_Or(Select* left, Select* right){
@@ -141,6 +144,8 @@ public:
 	    }
 	
 	}
+	delete left;
+	delete right;
     }
     virtual bool select(int row) const{
         return Rows[row];
@@ -170,13 +175,13 @@ public:
         column = sheet->get_column_by_name(name);
     }
 
-  virtual bool select(const Spreadsheet* sheet, int row) const
-    {
-        return select(sheet->cell_data(row, column));
-  }
+//  virtual bool select(const Spreadsheet* sheet, int row) const
+  //  {
+  //      return select(sheet->cell_data(row, column));
+//  }
 
     // Derived classes can instead implement this simpler interface.
-    virtual bool select(const std::string& s) const = 0;
+  //  virtual bool select(const std::string& s) const = 0;
 };
 
 #endif //__SELECT_HPP__
