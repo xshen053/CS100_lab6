@@ -1,5 +1,6 @@
 #ifndef __SELECT_HPP__
 #define __SELECT_HPP__
+
 #include <iostream>
 #include <cstring>
 
@@ -9,18 +10,9 @@ public:
     virtual ~Select() = default;
 
     // Return true if the specified row should be selected.
-
     virtual bool select(int row) const = 0;
     virtual int get_rows_size() const = 0;
 };
-
-// A common type of criterion for selection is to perform a comparison based on
-// the contents of one column.  This class contains contains the logic needed
-// for dealing with columns. Note that this class is also an abstract base
-// class, derived from Select.  It introduces a new select function (taking just
-// a string) and implements the original interface in terms of this.  Derived
-// classes need only implement the new select function.  You may choose to
-// derive from Select or Select_Column at your convenience.
 
 
 class Select_Contains: public Select{
@@ -31,7 +23,7 @@ protected:
 
 public:
     ~Select_Contains(){
-        delete Rows;
+        delete[] Rows;
     }
 
     Select_Contains(const Spreadsheet* sheet, const std::string& col, const std::string& str){
@@ -70,7 +62,7 @@ protected:
 
 public:
     ~Select_Not(){
-        delete Rows;
+        delete []Rows;
     }
 
     Select_Not(Select* sel){
@@ -79,6 +71,7 @@ public:
 	for(int i = 0; i < sel->get_rows_size(); i++){
 	    Rows[i] = !sel->select(i);
 	}
+	delete sel;
     }
                 
     virtual bool select(int row) const{
@@ -98,7 +91,7 @@ protected:
 
 public:
     ~Select_And(){
-        delete Rows;
+        delete []Rows;
     }
 
     Select_And(Select* left, Select* right){
@@ -113,6 +106,8 @@ public:
 	        Rows[i] = false;
 	    }
 	}
+	delete left;
+	delete right;
     }
 
     virtual bool select(int row) const{
@@ -134,7 +129,7 @@ protected:
 
 public:
     ~Select_Or(){
-        delete Rows;
+        delete []Rows;
     }
 
     Select_Or(Select* left, Select* right){
@@ -149,6 +144,8 @@ public:
 	    }
 	
 	}
+	delete left;
+	delete right;
     }
     virtual bool select(int row) const{
         return Rows[row];
@@ -159,7 +156,19 @@ public:
     }
 
 
+=======
+
+    virtual bool select(int row) const = 0;
+    virtual int get_rows_size() const = 0;
 };
+
+// A common type of criterion for selection is to perform a comparison based on
+// the contents of one column.  This class contains contains the logic needed
+// for dealing with columns. Note that this class is also an abstract base
+// class, derived from Select.  It introduces a new select function (taking just
+// a string) and implements the original interface in terms of this.  Derived
+// classes need only implement the new select function.  You may choose to
+// derive from Select or Select_Column at your convenience.
 class Select_Column: public Select
 {
 protected:
@@ -170,13 +179,13 @@ public:
         column = sheet->get_column_by_name(name);
     }
 
-    virtual bool select(const Spreadsheet* sheet, int row) const
-    {
-        return select(sheet->cell_data(row, column));
-    }
+//  virtual bool select(const Spreadsheet* sheet, int row) const
+  //  {
+  //      return select(sheet->cell_data(row, column));
+//  }
 
     // Derived classes can instead implement this simpler interface.
-    virtual bool select(const std::string& s) const = 0;
+  //  virtual bool select(const std::string& s) const = 0;
 };
 
 #endif //__SELECT_HPP__
